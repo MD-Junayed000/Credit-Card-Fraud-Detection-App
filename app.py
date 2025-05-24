@@ -7,47 +7,39 @@ import seaborn as sns
 # Load model
 model = joblib.load("rf_fraud_model.pkl")
 
-# App title
+# App config
 st.set_page_config(page_title="Credit Card Fraud Detection", layout="wide")
 st.title("💳 Credit Card Fraud Detection System")
 
 st.markdown("""
 This app lets you:
-- 📥 Predict fraud from individual transaction input
-- 📂 Upload CSVs for batch prediction
+
+- 📂 Upload CSVs for batch prediction  
+- 📥 Predict fraud from individual transaction input  
 - 📊 View a live dashboard of prediction stats
 """)
 
-# Sidebar navigation
-mode = st.sidebar.selectbox("Choose Mode", ["🔍 Single Transaction", "📂 Batch Prediction", "📊 Live Dashboard"])
+# -------------------- Mode Selector ---------------------
+mode = st.sidebar.selectbox("Choose Mode", ["📂 Batch Prediction","🔍 Single Transaction","📊 Live Dashboard"])
 
 
-# Single Transaction
 
-if mode == "🔍 Single Transaction":
-    st.header("🔍 Single Transaction Fraud Check")
-    with st.form("fraud_form"):
-        V_features = {}
-        for i in range(1, 29):
-            V_features[f"V{i}"] = st.number_input(f"V{i}", value=0.0)
-        amount = st.number_input("Amount", value=0.0)
-        submitted = st.form_submit_button("Predict")
-
-    if submitted:
-        input_data = pd.DataFrame([[*V_features.values(), amount]], columns=[*V_features.keys(), "Amount"])
-        prediction = model.predict(input_data)[0]
-        probability = model.predict_proba(input_data)[0][1]
-
-        st.subheader("🔎 Prediction Result")
-        if prediction == 1:
-            st.error(f"⚠️ Fraud Detected! Probability: {probability:.2f}")
-        else:
-            st.success(f"✅ Not Fraud. Probability: {probability:.2f}")
+# ------------------- Sidebar Profile --------------------
+with st.sidebar.expander("👨‍💻 Developer Info", expanded=False):
+    st.image("profile.jpg", width=200)  # 👈 rename your image file to profile.jpg
+    st.markdown("### Muhammad Junayed")
+    st.markdown("**ML | DL | NLP Engineer | Data Enthusiast**")
+    st.markdown("[📧 Email](mailto:mdjunayed573@gmail.com)")
+    st.markdown("[💻 GitHub](https://github.com/MD-Junayed000)")
+    st.markdown("[🔗 LinkedIn](https://linkedin.com/in/muhammad-junayed-ete20)")
+    st.markdown("[📊 Kaggle](https://www.kaggle.com/muhammadjunayed)")
+    st.info("Thanks for checking out the project! 🚀")
 
 
-# Batch Prediction
 
-elif mode == "📂 Batch Prediction":
+
+# -------------------- Batch Prediction ------------------
+if mode == "📂 Batch Prediction":
     st.header("📂 Upload CSV for Batch Prediction")
     uploaded_file = st.file_uploader("Upload your CSV file with V1–V28 and Amount columns", type=["csv"])
 
@@ -60,7 +52,7 @@ elif mode == "📂 Batch Prediction":
             if col in df_uploaded.columns:
                 df_uploaded.drop(columns=[col], inplace=True)
 
-        # Align column order
+        # Align columns
         expected_features = [f"V{i}" for i in range(1, 29)] + ['Amount']
         df_uploaded = df_uploaded[expected_features]
 
@@ -79,12 +71,31 @@ elif mode == "📂 Batch Prediction":
         st.download_button("⬇️ Download Results", csv, file_name="fraud_predictions.csv")
 
 
-#  Live Monitoring
+# ---------------- Single Transaction Prediction ----------------
+elif mode == "🔍 Single Transaction":
+    st.header("🔍 Single Transaction Fraud Check")
+    with st.form("fraud_form"):
+        V_features = {f"V{i}": st.number_input(f"V{i}", value=0.0) for i in range(1, 29)}
+        amount = st.number_input("Amount", value=0.0)
+        submitted = st.form_submit_button("Predict")
 
+    if submitted:
+        input_data = pd.DataFrame([[*V_features.values(), amount]], columns=[*V_features.keys(), "Amount"])
+        prediction = model.predict(input_data)[0]
+        probability = model.predict_proba(input_data)[0][1]
+
+        st.subheader("🔎 Prediction Result")
+        if prediction == 1:
+            st.error(f"⚠️ Fraud Detected! Probability: {probability:.2f}")
+        else:
+            st.success(f"✅ Not Fraud. Probability: {probability:.2f}")
+
+
+# -------------------- Live Monitoring Dashboard ----------------
 elif mode == "📊 Live Dashboard":
     st.header("📊 Live Fraud Monitoring Dashboard (Default is for the Demo Dataset Trained Model)")
 
-    # Load demo dataset (or real-time data)
+    # Load dataset
     df = pd.read_csv("creditcard.csv")
     df = df.drop_duplicates()
     normal = df[df['Class'] == 0]
