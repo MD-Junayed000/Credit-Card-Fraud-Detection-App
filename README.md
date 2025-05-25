@@ -1,6 +1,6 @@
 # 💳 Credit Card Fraud Detection System
 
-This project is a fully interactive **machine learning web app** built using **Streamlit** that allows you to:
+This project https://credit-card-fraud-detection-app-interface.streamlit.app/ is a fully interactive **machine learning web app** built using **Streamlit** that allows you to:
 
 ✅ Detect fraudulent credit card transactions  
 📂 Upload CSV files for batch predictions  
