@@ -36,7 +36,7 @@ Open:
 - `credit-card-fraud-detection-almost_complete.ipynb`
 
 ### ✅ Optional: Streamlit App
-See the `streamlit-deply` branch for the app. After training/saving a model, run:
+See the `streamlit-deploy` branch for the app. After training/saving a model, run:
 ```bash
 streamlit run app.py
 ```
@@ -46,7 +46,7 @@ streamlit run app.py
 ## 📁 Repository Contents
 - `credit-card-fraud-detection.ipynb` — EDA and baseline modeling
 - `credit-card-fraud-detection-almost_complete.ipynb` — full pipeline with SMOTE/XGBoost
-- `Muhammad Junayed_Final Report_BS23_Credit Card Fruad Detection.pdf` — project report
+- Project report (PDF) — available in the repo root
 - `Credit_img.png` — project image
 
 ---
