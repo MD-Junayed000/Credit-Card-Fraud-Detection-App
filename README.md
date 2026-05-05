@@ -1,6 +1,53 @@
 # 💳 Credit Card Fraud Detection
 
+![Credit Card Fraud Detection](Credit_img.png)
+
 This project focuses on identifying fraudulent credit card transactions using real-world anonymized data. The dataset is highly imbalanced, with only ~0.172% of transactions marked as fraud.
+
+---
+
+## 🧑‍💻 Developer Quickstart
+
+### ✅ Prerequisites
+- Python 3.10+ (notebooks created with Python 3.11)
+- Jupyter Notebook or JupyterLab
+
+### ✅ Setup
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install pandas numpy scikit-learn imbalanced-learn xgboost seaborn matplotlib jupyter
+```
+
+### ✅ Dataset
+Download the **Credit Card Fraud Detection** dataset from Kaggle and place it locally.  
+The notebooks currently read from:
+```
+/kaggle/input/creditcardfraud/creditcard.csv
+```
+Update the path to your local file, e.g. `data/creditcard.csv`.
+
+### ✅ Run Notebooks
+```bash
+jupyter notebook
+```
+Open:
+- `credit-card-fraud-detection.ipynb`
+- `credit-card-fraud-detection-almost_complete.ipynb`
+
+### ✅ Optional: Streamlit App
+See the `streamlit-deply` branch for the app. After training/saving a model, run:
+```bash
+streamlit run app.py
+```
+
+---
+
+## 📁 Repository Contents
+- `credit-card-fraud-detection.ipynb` — EDA and baseline modeling
+- `credit-card-fraud-detection-almost_complete.ipynb` — full pipeline with SMOTE/XGBoost
+- `Muhammad Junayed_Final Report_BS23_Credit Card Fruad Detection.pdf` — project report
+- `Credit_img.png` — project image
 
 ---
 
@@ -17,13 +64,13 @@ This project focuses on identifying fraudulent credit card transactions using re
 
 ---
 
-##  Objective
+## 🎯 Objective
 
 Detect fraudulent transactions using machine learning techniques, despite the class imbalance. Evaluate models using suitable metrics like AUPRC, Recall, F1 Score, and visualize model performance.
 
 ---
 
-##  Exploratory Data Analysis (EDA)
+## 🔍 Exploratory Data Analysis (EDA)
 
 - **Duplicates**: 1081 rows were exact duplicates and dropped.
 - **Fraud Timing**:
@@ -64,7 +111,7 @@ Detect fraudulent transactions using machine learning techniques, despite the cl
 
 ---
 
-##  Evaluation Metrics
+## 📏 Evaluation Metrics
 
 Due to imbalance, we prioritized:
 
@@ -88,6 +135,6 @@ Due to imbalance, we prioritized:
 
 ---
 
-##  **Deploy Locally** (Can be more understood from the streamlit-deply Branch)
-  - Use `joblib` to load model
-  - Run with `streamlit run app.py`
+## 🚀 Deploy Locally (Streamlit Branch)
+- Use `joblib` to load the trained model
+- Run with `streamlit run app.py`
