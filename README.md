@@ -1,4 +1,4 @@
-# 💳 Credit Card Fraud Detection
+# Credit Card Fraud Detection
 
 ![Credit Card Fraud Detection](Credit_img.png)
 
@@ -6,20 +6,20 @@ This project focuses on identifying fraudulent credit card transactions using re
 
 ---
 
-## 🧑‍💻 Developer Quickstart
+## Quickstart
 
-### ✅ Prerequisites
+###  Prerequisites
 - Python 3.10+ (notebooks created with Python 3.11)
 - Jupyter Notebook or JupyterLab
 
-### ✅ Setup
+###  Setup
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install pandas numpy scikit-learn imbalanced-learn xgboost seaborn matplotlib jupyter
 ```
 
-### ✅ Dataset
+###  Dataset
 Download the **Credit Card Fraud Detection** dataset from Kaggle and place it locally.  
 The notebooks currently read from:
 ```
@@ -27,7 +27,7 @@ The notebooks currently read from:
 ```
 Update the path to your local file, e.g. `data/creditcard.csv`.
 
-### ✅ Run Notebooks
+###  Run Notebooks
 ```bash
 jupyter notebook
 ```
@@ -35,7 +35,7 @@ Open:
 - `credit-card-fraud-detection.ipynb`
 - `credit-card-fraud-detection-almost_complete.ipynb`
 
-### ✅ Optional: Streamlit App
+###  Optional: Streamlit App
 See the `streamlit-deploy` branch for the app. After training/saving a model, run:
 ```bash
 streamlit run app.py
@@ -43,7 +43,7 @@ streamlit run app.py
 
 ---
 
-## 📁 Repository Contents
+##  Repository Contents
 - `credit-card-fraud-detection.ipynb` — EDA and baseline modeling
 - `credit-card-fraud-detection-almost_complete.ipynb` — full pipeline with SMOTE/XGBoost
 - Project report (PDF) — available in the repo root
@@ -51,7 +51,7 @@ streamlit run app.py
 
 ---
 
-## 📊 Dataset Overview
+##  Dataset Overview
 
 - **Total Transactions**: 284,807
 - **Fraudulent Transactions**: 492 (≈ 0.172%)
@@ -64,13 +64,13 @@ streamlit run app.py
 
 ---
 
-## 🎯 Objective
+##  Objective
 
 Detect fraudulent transactions using machine learning techniques, despite the class imbalance. Evaluate models using suitable metrics like AUPRC, Recall, F1 Score, and visualize model performance.
 
 ---
 
-## 🔍 Exploratory Data Analysis (EDA)
+##  Exploratory Data Analysis (EDA)
 
 - **Duplicates**: 1081 rows were exact duplicates and dropped.
 - **Fraud Timing**:
@@ -82,7 +82,7 @@ Detect fraudulent transactions using machine learning techniques, despite the cl
 
 ---
 
-## ⚙️ Preprocessing Steps
+##  Preprocessing Steps
 
 - Dropped duplicates
 - Scaled `Time` and `Amount` using `StandardScaler`
@@ -91,27 +91,27 @@ Detect fraudulent transactions using machine learning techniques, despite the cl
 
 ---
 
-## 🔁Models Implemented
+## Models Implemented
 
-### ✅ Random Forest (Undersampling)
+###  Random Forest (Undersampling)
 
 - Balanced classes by undersampling majority (non-fraud) class
 - Achieved **AUPRC ~0.98**, **ROC-AUC ~0.98**, **F1 ~0.96**
 
-### ✅ XGBoost with SMOTE
+###  XGBoost with SMOTE
 
 - Used pipeline: `SMOTE + XGBoost`
 - Tuned hyperparameters using `RandomizedSearchCV`
 - Achieved high F1, Precision, Recall and AUPRC
 
-### ✅ LightGBM and Logistic Regression (for comparison)
+###  LightGBM and Logistic Regression (for comparison)
 
 - Logistic Regression was used with class weighting
 - LightGBM used for speed and scalability
 
 ---
 
-## 📏 Evaluation Metrics
+##  Evaluation Metrics
 
 Due to imbalance, we prioritized:
 
@@ -125,7 +125,7 @@ Due to imbalance, we prioritized:
 
 ---
 
-## 📉 Visualizations
+##  Visualizations
 
 - **Precision-Recall Curve**
 - **ROC Curve**
@@ -135,6 +135,6 @@ Due to imbalance, we prioritized:
 
 ---
 
-## 🚀 Deploy Locally (Streamlit Branch)
+##  Deploy Locally (Streamlit Branch)
 - Use `joblib` to load the trained model
 - Run with `streamlit run app.py`
