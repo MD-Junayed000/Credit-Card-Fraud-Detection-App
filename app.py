@@ -29,10 +29,10 @@ with st.sidebar.expander("👨‍💻 Developer Info", expanded=False):
     st.image("profile.jpg", width=200)  # 👈 rename your image file to profile.jpg
     st.markdown("### Muhammad Junayed")
     st.markdown("**ML | DL | NLP Engineer | Data Enthusiast**")
-    st.markdown("[📧 Email](mailto:mdjunayed573@gmail.com)")
+    st.markdown("[📧 Email](mdjunayed573@gmail.com)")
     st.markdown("[💻 GitHub](https://github.com/MD-Junayed000)")
     st.markdown("[🔗 LinkedIn](https://linkedin.com/in/muhammad-junayed-ete20)")
-    st.markdown("[📊 Kaggle](https://www.kaggle.com/muhammadjunayed)")
+    st.markdown("[📊 Kaggle](https://www.kaggle.com/muhammedjunayed)")
     st.info("Thanks for checking out the project! 🚀")
 
 
